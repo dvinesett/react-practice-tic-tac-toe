@@ -21,30 +21,28 @@ class Board extends React.Component {
   }
 
   boardRow(cols) {
-    const rowItem = []
-    for (let c of cols) {
-      rowItem.push(this.renderSquare(c));
-    }
-    return rowItem;
+    return (
+      <div className="board-row">
+        {cols.map((i) => this.renderSquare(i))}
+      </div>
+    )
   }
 
   render() {
     const rows = [0, 1, 2]
     const cols = [0, 1, 2]
 
-    const boardItems = []
-
-    for (let r of rows) {
-      let rowItem = []
-      rowItem.push(
-        <div className="board-row">
-          {this.boardRow(cols.map(c => r*rows.length + c))}
-        </div>
-      )
-      boardItems.push(rowItem)
-    }
-
-    return (<div>{boardItems}</div>)
+    return (
+      <div>
+        {
+          rows.map((row) => {
+            return this.boardRow(
+              cols.map((col) => row*rows.length + col)
+            );
+          })
+        }
+      </div>
+    )
   }
 }
 
