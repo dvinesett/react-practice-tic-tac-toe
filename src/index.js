@@ -150,8 +150,10 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol reversed={this.state.sortAscending ? false : true}>
-            {this.state.sortAscending ? moves : moves.reverse()}
+          <ol 
+            start={this.state.sortAscending ? "0" : this.state.history.length - 1}
+            reversed={this.state.sortAscending ? false : true}>
+              {this.state.sortAscending ? moves : moves.reverse()}
           </ol>
           <div>{sortButton()}</div>
         </div>
